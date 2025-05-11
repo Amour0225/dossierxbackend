@@ -1,0 +1,21 @@
+equipe_domicile,equipe_exterieure,nb_tirs,nb_corners,nb_tirs_cadres,nb_passes,forme_domicile,forme_exterieure,fautes,cartons,buts,possession
+Equipe E,Equipe C,5,3,4,587,Moyenne,Mauvaise,6,1,2,47
+Equipe D,Equipe A,12,9,11,426,Moyenne,Mauvaise,19,2,4,40
+Equipe D,Equipe B,13,8,9,369,Mauvaise,Moyenne,13,0,1,48
+Equipe D,Equipe E,18,4,17,402,Moyenne,Bonne,10,0,1,54
+Equipe E,Equipe D,5,10,2,527,Mauvaise,Mauvaise,8,3,2,42
+Equipe C,Equipe D,13,7,13,249,Moyenne,Mauvaise,19,3,0,40
+Equipe D,Equipe B,13,7,5,467,Moyenne,Mauvaise,11,0,3,47
+Equipe A,Equipe C,15,7,9,175,Moyenne,Bonne,15,0,1,59
+Equipe B,Equipe D,17,2,10,176,Moyenne,Bonne,19,2,4,46
+Equipe C,Equipe B,5,9,4,500,Mauvaise,Moyenne,15,1,2,58
+Equipe A,Equipe C,11,7,2,499,Mauvaise,Moyenne,10,2,3,48
+Equipe E,Equipe B,5,10,2,489,Bonne,Bonne,13,1,5,44
+Equipe D,Equipe B,16,7,3,354,Mauvaise,Mauvaise,6,2,5,42
+Equipe A,Equipe C,8,7,7,369,Mauvaise,Bonne,19,0,2,53
+Equipe D,Equipe B,10,9,4,217,Bonne,Mauvaise,7,0,1,43
+Equipe D,Equipe C,11,7,8,474,Bonne,Mauvaise,9,2,2,49
+Equipe C,Equipe D,20,4,13,226,Bonne,Bonne,14,1,0,48
+Equipe E,Equipe A,19,7,19,488,Moyenne,Moyenne,9,1,3,52
+Equipe E,Equipe D,15,4,13,544,Mauvaise,Mauvaise,14,1,5,52
+Equipe B,Equipe E,5,4,5,342,Moyenne,Mauvaise,5,3,0,59
