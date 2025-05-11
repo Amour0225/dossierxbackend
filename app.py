@@ -1,3 +1,12 @@
+import os
+
+# Vérification du fichier
+csv_path = "dossierx_match_data.csv"
+
+if os.path.exists(csv_path):
+    print("Fichier trouvé, chargement en cours...")
+else:
+    raise FileNotFoundError(f"Erreur : Le fichier '{csv_path}' est introuvable.")
 from flask import Flask, jsonify
 import pandas as pd
 import os
