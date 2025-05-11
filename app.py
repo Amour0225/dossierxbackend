@@ -1,3 +1,20 @@
+from flask import Flask, jsonify
+import pandas as pd
+import os
+
+app = Flask(__name__)
+
+@app.route('/api/match-predictions')
+def match_predictions():
+    file_path = os.path.join(os.getcwd(), 'dossierx_match_data.csv')
+    if not os.path.exists(file_path):
+        return jsonify({"error": "Fichier dossierx_match_data.csv introuvable"}), 404
+
+    df = pd.read_csv(file_path)
+    return df.to_json(orient='records'), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
