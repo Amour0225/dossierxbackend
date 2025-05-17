@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import pickle
 
 app = Flask(__name__)
 CORS(app)
@@ -27,32 +28,34 @@ def match_predictions():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
+    try:
+        data = request.get_json()
+        team1 = data.get('team1')
+        team2 = data.get('team2')
 
-    # Données reçues (à adapter selon ton frontend)
-    var_input = data.get('var_input')
-    corners_input = data.get('corners_input')
-    buts_input = data.get('buts_input')
-    fautes_input = data.get('fautes_input')
-    cartons_input = data.get('cartons_input')
-    possession_input = data.get('possession_input')
+        # Charger les fichiers nécessaires
+        with open("model_fouls.pkl", "rb") as f:
+            model_fouls = pickle.load(f)
+        with open("le_team1.pkl", "rb") as f:
+            le_team1 = pickle.load(f)
+        with open("le_team2.pkl", "rb") as f:
+            le_team2 = pickle.load(f)
 
-    # Prédictions simulées (remplacer par tes vrais modèles ensuite)
-    var_prediction = 'VAR probable' if var_input else 'VAR improbable'
-    corners_prediction = 'Plus de 10 corners' if corners_input else 'Moins de 10 corners'
-    buts_prediction = f"{buts_input} buts probables" if buts_input is not None else "Buts inconnus"
-    fautes_prediction = f"{fautes_input} fautes probables" if fautes_input is not None else "Fautes inconnues"
-    cartons_prediction = f"{cartons_input} cartons probables" if cartons_input is not None else "Cartons inconnus"
-    possession_prediction = f"{possession_input}% de possession attendue" if possession_input is not None else "Possession inconnue"
+        # Encoder les noms d'équipes
+        team1_encoded = le_team1.transform([team1])[0]
+        team2_encoded = le_team2.transform([team2])[0]
 
-    return jsonify({
-        'var_prediction': var_prediction,
-        'corners_prediction': corners_prediction,
-        'buts_prediction': buts_prediction,
-        'fautes_prediction': fautes_prediction,
-        'cartons_prediction': cartons_prediction,
-        'possession_prediction': possession_prediction
-    })
+        # Faire une prédiction
+        X = [[team1_encoded, team2_encoded]]
+        predicted_fouls = model_fouls.predict(X)[0]
+
+        return jsonify({
+            "team1": team1,
+            "team2": team2,
+            "predicted_fouls": round(predicted_fouls)
+        })
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000, debug=True)
