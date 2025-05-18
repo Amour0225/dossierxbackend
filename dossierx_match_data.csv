@@ -1,6 +1,6 @@
-team1,team2,fouls
-Real Madrid,Barcelona,15
-Chelsea,Liverpool,10
-PSG,Marseille,12
-Bayern,Dortmund,9
-Juventus,Inter,11
+team1,team2,fouls,cards,goals,possession
+Real Madrid,Barcelona,15,4,2,55
+Chelsea,Liverpool,10,3,1,48
+PSG,Marseille,12,5,3,60
+Bayern,Dortmund,9,2,2,53
+Juventus,Inter,11,3,1,50
